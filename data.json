@@ -24,11 +24,11 @@
   },
   "members": [
     {
-      "name": "Member Name",
+      "name": "Daniel Choi",
       "grade": "9",
-      "instrument": "Violin",
-      "description": "Short biography placeholder for musical background, favorite repertoire, and ensemble role.",
-      "image": "assets/student-musicians.png"
+      "instrument": "Viola",
+      "description": "Needham High Schooler",
+      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779405155076_20260221_163844.jpg"
     },
     {
       "name": "Member Name",
