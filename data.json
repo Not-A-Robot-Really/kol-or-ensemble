@@ -1,0 +1,78 @@
+{
+  "site": {
+    "name": "Kol Or Ensemble",
+    "tagline": "The Sound of Light that Illuminates the World",
+    "heroText": "We are freshmen from Needham High School performing in places to spread the beauty of music and help people know how it can touch hearts.",
+    "aboutTitle": "Music shaped to carry clarity, warmth, and hope.",
+    "aboutText": "Kol Or Ensemble takes its name from the Hebrew words Kol, meaning sound, and Or, meaning light. Inspired by the idea that music can illuminate hearts and connect the world, the ensemble seeks to bring clarity, warmth, and hope through chamber music. Each performance is an invitation to listen deeply and to experience sound as light.",
+    "heroImage": "assets/performance-hall.png",
+    "aboutImage": "assets/rehearsal-room.png",
+    "gallery": [
+      {
+        "title": "Feature performance photo",
+        "image": "assets/performance-hall.png"
+      },
+      {
+        "title": "Community visit",
+        "image": "assets/community-visit.png"
+      },
+      {
+        "title": "Student musicians",
+        "image": "assets/student-musicians.png"
+      }
+    ]
+  },
+  "members": [
+    {
+      "name": "Member Name",
+      "grade": "9",
+      "instrument": "Violin",
+      "description": "Short biography placeholder for musical background, favorite repertoire, and ensemble role.",
+      "image": "assets/student-musicians.png"
+    },
+    {
+      "name": "Member Name",
+      "grade": "9",
+      "instrument": "Cello",
+      "description": "Short biography placeholder for chamber music experience and community performance goals.",
+      "image": "assets/rehearsal-room.png"
+    }
+  ],
+  "concerts": [
+    {
+      "date": "June 15, 2026",
+      "description": "Placeholder announcement for a warm chamber program centered on music that brightens the room.",
+      "pieces": [
+        "Piece Title Placeholder",
+        "Second Piece Placeholder"
+      ],
+      "images": [
+        "assets/stage-light.png"
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "title": "Concert Video Title",
+      "piece": "Piece Name Placeholder",
+      "description": "Placeholder description for recording date, venue, and featured repertoire.",
+      "video": "",
+      "thumbnail": "assets/video-thumb.png"
+    }
+  ],
+  "recordings": [
+    {
+      "title": "Recording Title Placeholder",
+      "piece": "Piece Name Placeholder",
+      "description": "A short description for the performance, including where it was recorded, the piece performed, and why it matters to the ensemble.",
+      "video": "",
+      "thumbnail": "assets/recording-thumb.png"
+    }
+  ],
+  "socials": {
+    "phone": "(555) 123-4567",
+    "email": "contact@example.org",
+    "instagramName": "@kolorensemble",
+    "instagramUrl": "https://instagram.com/kolorensemble"
+  }
+}
