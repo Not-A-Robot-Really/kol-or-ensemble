@@ -10,6 +10,7 @@
     :root {
       --bg: #030303;
       --panel: #0f0e0b;
+      --panel-2: #17140e;
       --ink: #fff6dc;
       --muted: #cfc3aa;
       --gold: #edbf4a;
@@ -19,12 +20,7 @@
     }
 
     * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 96px;
-    }
-
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
     body {
       margin: 0;
       color: var(--ink);
@@ -33,9 +29,7 @@
       line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -44,9 +38,8 @@
       box-shadow: inset 0 0 170px rgba(237, 191, 74, 0.08), inset 0 0 420px rgba(0, 0, 0, 0.95);
       z-index: -3;
     }
-
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+    img, video { display: block; max-width: 100%; }
 
     .site-header {
       position: sticky;
@@ -56,7 +49,6 @@
       background: rgba(3, 3, 3, 0.9);
       backdrop-filter: blur(16px);
     }
-
     .nav-wrap {
       width: min(var(--max), calc(100% - 32px));
       min-height: 76px;
@@ -64,9 +56,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 18px;
     }
-
     .brand-mark {
       width: 124px;
       height: 52px;
@@ -77,39 +68,26 @@
       box-shadow: 0 0 22px rgba(237, 191, 74, 0.12);
       overflow: hidden;
     }
-
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 2px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
+    nav { display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap; }
+    nav a, .admin-link {
       color: #eadfc7;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       padding: 9px 10px;
       border: 1px solid transparent;
+      background: transparent;
+      cursor: pointer;
       transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
     }
-
-    nav a:hover,
-    nav a:focus-visible {
+    nav a:hover, nav a:focus-visible, .admin-link:hover {
       color: var(--gold-soft);
       border-color: rgba(237, 191, 74, 0.28);
       background: rgba(237, 191, 74, 0.08);
       outline: none;
     }
+    .admin-link.signed-in { color: #111; background: var(--gold); border-color: var(--gold); font-weight: 800; }
 
-    .page-hero {
+    .hero {
       position: relative;
       min-height: 86vh;
       display: grid;
@@ -117,18 +95,17 @@
       padding: 96px 0 78px;
       overflow: hidden;
     }
-
-    .page-hero::before {
-      content: "";
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: url("assets/performance-hall.png") center/cover fixed;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
       opacity: 0.42;
       transform: scale(1.03);
       z-index: -3;
     }
-
-    .page-hero::after {
+    .hero::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -136,7 +113,6 @@
       box-shadow: inset 0 -180px 140px #030303, inset 0 120px 120px rgba(0, 0, 0, 0.7);
       z-index: -2;
     }
-
     .light-beam {
       position: absolute;
       left: min(48vw, 720px);
@@ -149,30 +125,12 @@
       opacity: 0.72;
       z-index: -1;
     }
-
-    .light-orb {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gold-soft);
-      box-shadow: 0 0 22px var(--gold), 0 0 84px rgba(237, 191, 74, 0.78);
-      animation: shimmer 3.8s ease-in-out infinite;
-      z-index: -1;
-    }
-
-    .light-orb.one { left: 18%; top: 31%; }
-    .light-orb.two { left: 62%; top: 24%; width: 5px; height: 5px; animation-delay: 0.8s; }
-    .light-orb.three { left: 78%; top: 62%; width: 6px; height: 6px; animation-delay: 1.7s; }
-
-    .container,
-    .hero-inner {
+    .container, .hero-inner {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
       position: relative;
       z-index: 5;
     }
-
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -183,7 +141,6 @@
       font-size: 0.78rem;
       font-weight: 800;
     }
-
     .eyebrow::before {
       content: "";
       width: 42px;
@@ -191,14 +148,12 @@
       background: var(--gold);
       box-shadow: 0 0 18px rgba(237, 191, 74, 0.7);
     }
-
     h1, h2, h3 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 500;
       line-height: 1.04;
     }
-
     h1 {
       max-width: 880px;
       margin-top: 20px;
@@ -206,36 +161,11 @@
       font-size: clamp(3.2rem, 8vw, 7rem);
       text-shadow: 0 0 26px rgba(237, 191, 74, 0.22), 0 14px 48px rgba(0, 0, 0, 0.7);
     }
-
-    h2 {
-      color: var(--ink);
-      font-size: clamp(2.1rem, 4vw, 4rem);
-    }
-
-    h3 {
-      color: var(--gold-soft);
-      font-size: 1.38rem;
-    }
-
-    .hero-copy,
-    .section-head p,
-    .prose p,
-    .card p {
-      color: var(--muted);
-    }
-
-    .hero-copy {
-      max-width: 690px;
-      margin: 24px 0 34px;
-      font-size: 1.1rem;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
+    h2 { color: var(--ink); font-size: clamp(2.1rem, 4vw, 4rem); }
+    h3 { color: var(--gold-soft); font-size: 1.38rem; }
+    p { color: var(--muted); }
+    .hero-copy { max-width: 690px; margin: 24px 0 34px; font-size: 1.1rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -248,61 +178,13 @@
       font-weight: 850;
       box-shadow: 0 0 24px rgba(237, 191, 74, 0.22), 0 16px 34px rgba(0, 0, 0, 0.32);
       transition: transform 160ms ease, background 160ms ease;
+      cursor: pointer;
     }
+    .btn:hover { background: #ffd56e; transform: translateY(-1px); }
+    .btn.secondary { background: rgba(4, 4, 4, 0.72); color: var(--gold-soft); }
 
-    .btn:hover,
-    .btn:focus-visible {
-      background: #ffd56e;
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .btn.secondary {
-      background: rgba(4, 4, 4, 0.72);
-      color: var(--gold-soft);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1px;
-      max-width: 840px;
-      margin-top: 54px;
-      border: 1px solid rgba(237, 191, 74, 0.18);
-      background: rgba(237, 191, 74, 0.16);
-    }
-
-    .stat {
-      padding: 22px;
-      background: rgba(8, 8, 7, 0.88);
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--gold);
-      font-family: Georgia, serif;
-      font-size: 2rem;
-      line-height: 1;
-      text-shadow: 0 0 18px rgba(237, 191, 74, 0.28);
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    section.content {
-      position: relative;
-      padding: 94px 0;
-    }
-
-    .band {
-      background: #080806;
-      border-block: 1px solid rgba(237, 191, 74, 0.12);
-    }
-
+    section.content { position: relative; padding: 94px 0; }
+    .band { background: #080806; border-block: 1px solid rgba(237, 191, 74, 0.12); }
     .section-head {
       display: grid;
       grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.42fr);
@@ -310,100 +192,43 @@
       align-items: end;
       margin-bottom: 40px;
     }
-
-    .prose {
-      display: grid;
-      gap: 18px;
-      max-width: 760px;
-      font-size: 1.04rem;
-    }
-
-    .prose strong { color: var(--gold-soft); }
-
     .split {
       display: grid;
       grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.55fr);
       gap: 46px;
       align-items: stretch;
     }
-
+    .prose { display: grid; gap: 18px; max-width: 760px; font-size: 1.04rem; }
+    .prose strong { color: var(--gold-soft); }
     .image-panel {
       min-height: 410px;
       border: 1px solid rgba(237, 191, 74, 0.18);
-      background: var(--panel-image) center/cover;
+      background-position: center;
+      background-size: cover;
       box-shadow: 0 0 50px rgba(237, 191, 74, 0.08), 0 26px 70px rgba(0, 0, 0, 0.5);
     }
-
-    .image-panel::after {
-      content: "Performance image placeholder";
-      display: block;
-      margin: 18px;
-      color: rgba(255, 244, 205, 0.78);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
     .card {
       background: var(--panel);
       border: 1px solid rgba(237, 191, 74, 0.16);
       box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
       overflow: hidden;
+      position: relative;
       transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
     }
-
     .card:hover {
       transform: translateY(-3px);
       border-color: rgba(237, 191, 74, 0.34);
       box-shadow: 0 0 34px rgba(237, 191, 74, 0.12), 0 26px 62px rgba(0, 0, 0, 0.36);
     }
-
     .card-body { padding: 24px; }
-
-    .photo,
-    .video-thumb {
+    .photo, .video-thumb {
       aspect-ratio: 16 / 10;
       background-size: cover;
       background-position: center;
       border-bottom: 1px solid rgba(237, 191, 74, 0.14);
     }
-
-    .label,
-    .recording-meta {
-      display: block;
-      color: var(--gold);
-      font-size: 0.76rem;
-      font-weight: 850;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .post {
-      min-height: 285px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .post-link {
-      color: var(--gold-soft);
-      margin-top: 26px;
-      font-weight: 800;
-    }
-
-    .video-thumb {
-      display: grid;
-      place-items: center;
-      min-height: 190px;
-    }
-
+    .video-thumb { display: grid; place-items: center; min-height: 190px; }
     .play {
       width: 64px;
       height: 64px;
@@ -416,18 +241,17 @@
       font-size: 1.35rem;
       padding-left: 4px;
     }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 18px;
+    .label {
+      display: block;
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
-
-    .gallery-stack {
-      display: grid;
-      gap: 18px;
-    }
-
+    .gallery-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; }
+    .gallery-stack { display: grid; gap: 18px; }
     .picture-card {
       position: relative;
       min-height: 260px;
@@ -437,17 +261,8 @@
       box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
       overflow: hidden;
     }
-
     .picture-card.large { min-height: 538px; }
-
-    .picture-card img {
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-      object-fit: cover;
-      opacity: 0.78;
-    }
-
+    .picture-card img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; opacity: 0.78; }
     .picture-caption {
       position: absolute;
       left: 20px;
@@ -459,14 +274,83 @@
       text-transform: uppercase;
       text-shadow: 0 2px 18px rgba(0, 0, 0, 0.82);
     }
-
-    .footer {
-      padding: 42px 0;
-      border-top: 1px solid rgba(237, 191, 74, 0.14);
-      background: #030303;
-      color: var(--muted);
+    .admin-actions {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 8;
+      gap: 7px;
     }
-
+    body.admin-mode .admin-actions { display: flex; }
+    .mini-btn {
+      border: 1px solid rgba(237, 191, 74, 0.35);
+      background: rgba(0,0,0,0.72);
+      color: var(--gold-soft);
+      padding: 6px 9px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+    .admin-panel {
+      display: none;
+      margin: 30px 0 0;
+      padding: 22px;
+      border: 1px solid rgba(237, 191, 74, 0.28);
+      background: #11100d;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+    }
+    body.admin-mode .admin-panel { display: block; }
+    .admin-panel h3 { margin-bottom: 14px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .form-grid.full { grid-template-columns: 1fr; }
+    label { display: grid; gap: 6px; color: var(--gold-soft); font-weight: 800; font-size: 0.86rem; }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid rgba(237, 191, 74, 0.22);
+      background: #050505;
+      color: var(--ink);
+      padding: 10px 11px;
+      font: inherit;
+    }
+    textarea { min-height: 94px; resize: vertical; }
+    input[type="file"] { padding: 8px; }
+    .form-row-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .danger { background: #5c1717; color: #fff; border-color: #b23a3a; }
+    .status {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: #11100d;
+      color: var(--gold-soft);
+      border: 1px solid var(--line);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease;
+    }
+    .status.show { opacity: 1; }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,0.68);
+      z-index: 80;
+      padding: 18px;
+    }
+    .modal-backdrop.open { display: grid; }
+    .modal {
+      width: min(720px, 100%);
+      max-height: min(86vh, 780px);
+      overflow: auto;
+      border: 1px solid rgba(237, 191, 74, 0.32);
+      background: #0d0c09;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.62);
+      padding: 24px;
+    }
+    .footer { padding: 42px 0; border-top: 1px solid rgba(237, 191, 74, 0.14); color: var(--muted); }
     .footer-inner {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
@@ -476,15 +360,7 @@
       gap: 24px;
       flex-wrap: wrap;
     }
-
-    .notes-layer {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 4;
-    }
-
+    .notes-layer { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 4; }
     .note {
       position: absolute;
       color: rgba(237, 191, 74, 0.52);
@@ -494,14 +370,7 @@
       will-change: transform;
       animation: notePulse 5s ease-in-out infinite;
     }
-
-    .page-lights {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-    }
-
+    .page-lights { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
     .page-lights span {
       position: absolute;
       width: 5px;
@@ -512,65 +381,27 @@
       opacity: 0.58;
       animation: shimmer 4.5s ease-in-out infinite;
     }
-
     .page-lights span:nth-child(1) { left: 12%; top: 18%; }
     .page-lights span:nth-child(2) { left: 84%; top: 26%; animation-delay: 1s; }
     .page-lights span:nth-child(3) { left: 68%; top: 78%; animation-delay: 2s; }
     .page-lights span:nth-child(4) { left: 24%; top: 84%; animation-delay: 3s; }
-
-    @keyframes notePulse {
-      0%, 100% { opacity: 0.34; }
-      50% { opacity: 0.82; }
-    }
-
-    @keyframes shimmer {
-      0%, 100% { opacity: 0.32; transform: scale(0.85); }
-      50% { opacity: 0.86; transform: scale(1.28); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .note, .light-orb, .page-lights span { animation: none; }
-      .page-hero::before { background-attachment: scroll; }
-    }
-
+    @keyframes notePulse { 0%, 100% { opacity: 0.34; } 50% { opacity: 0.82; } }
+    @keyframes shimmer { 0%, 100% { opacity: 0.32; transform: scale(0.85); } 50% { opacity: 0.86; transform: scale(1.28); } }
     @media (max-width: 900px) {
-      .nav-wrap {
-        min-height: auto;
-        padding: 12px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
+      .nav-wrap { min-height: auto; padding: 12px 0; align-items: flex-start; flex-direction: column; }
       nav { justify-content: flex-start; }
-
-      .page-hero {
-        min-height: auto;
-        padding-top: 64px;
-      }
-
-      .section-head,
-      .split,
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .grid,
-      .stats {
-        grid-template-columns: 1fr 1fr;
-      }
-
+      .hero { min-height: auto; padding-top: 64px; }
+      .section-head, .split, .gallery-grid, .form-grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
       .picture-card.large { min-height: 340px; }
     }
-
     @media (max-width: 620px) {
       .brand-mark { width: 104px; height: 44px; }
-      nav a { padding: 7px 8px; font-size: 0.84rem; }
+      nav a, .admin-link { padding: 7px 8px; font-size: 0.82rem; }
       h1 { font-size: 3rem; }
       section.content { padding: 72px 0; }
-      .grid, .stats { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
       .picture-card, .picture-card.large { min-height: 240px; }
-      .note { opacity: 0.58; }
     }
   </style>
 </head>
@@ -587,28 +418,37 @@
         <a href="#videos">Videos</a>
         <a href="#recordings">Recordings</a>
         <a href="#socials">Socials</a>
+        <button class="admin-link" id="adminButton" type="button">Admin Sign In</button>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="home" class="page-hero">
+    <section id="home" class="hero">
+      <div class="hero-bg" id="heroBg"></div>
       <span class="light-beam" aria-hidden="true"></span>
-      <span class="light-orb one" aria-hidden="true"></span>
-      <span class="light-orb two" aria-hidden="true"></span>
-      <span class="light-orb three" aria-hidden="true"></span>
       <div class="hero-inner">
-        <span class="eyebrow">The sound of light that illuminates the world</span>
-        <h1>Kol Or Ensemble</h1>
-        <p class="hero-copy">We are freshmen from Needham High School performing in places to spread the beauty of music and help people know how it can touch hearts.</p>
+        <span class="eyebrow" id="siteTagline"></span>
+        <h1 id="siteName"></h1>
+        <p class="hero-copy" id="heroText"></p>
         <div class="actions">
           <a class="btn" href="#concerts">View Concerts</a>
           <a class="btn secondary" href="#members">Meet the Ensemble</a>
         </div>
-        <div class="stats" aria-label="Ensemble meaning">
-          <div class="stat"><strong>Kol</strong><span>Sound</span></div>
-          <div class="stat"><strong>Or</strong><span>Light</span></div>
-          <div class="stat"><strong>NHS</strong><span>Freshman Ensemble</span></div>
+        <div class="admin-panel" id="siteAdminPanel">
+          <h3>Edit Home / About / Gallery</h3>
+          <div class="form-grid">
+            <label>Site name <input id="siteNameInput" type="text" /></label>
+            <label>Tagline <input id="siteTaglineInput" type="text" /></label>
+            <label class="full-span">Hero text <textarea id="heroTextInput"></textarea></label>
+            <label>Replace hero image <input id="heroImageInput" type="file" accept="image/*" /></label>
+            <label>Replace about image <input id="aboutImageInput" type="file" accept="image/*" /></label>
+          </div>
+          <div class="form-grid full" style="margin-top:14px;">
+            <label>About title <input id="aboutTitleInput" type="text" /></label>
+            <label>About text <textarea id="aboutTextInput"></textarea></label>
+          </div>
+          <div class="form-row-actions"><button class="btn" type="button" onclick="saveSiteSettings()">Save Site Text / Images</button></div>
         </div>
       </div>
     </section>
@@ -617,125 +457,75 @@
       <div class="container split">
         <div>
           <span class="eyebrow">About the ensemble</span>
-          <h2>Music shaped to carry clarity, warmth, and hope.</h2>
-          <div class="prose" style="margin-top: 28px;">
-            <p><strong>"The Sound of Light that Illuminates the World"</strong></p>
-            <p>We are all freshmen from Needham High School who are performing in places to spread the beauty of music and help people know how it can touch hearts.</p>
-            <p>Kol Or Ensemble takes its name from the Hebrew words Kol, meaning sound, and Or, meaning light. Inspired by the idea that music can illuminate hearts and connect the world, the ensemble seeks to bring clarity, warmth, and hope through chamber music.</p>
-            <p>Each performance is an invitation to listen deeply and to experience sound as light.</p>
-          </div>
+          <h2 id="aboutTitle"></h2>
+          <div class="prose" style="margin-top:28px;"><p id="aboutText"></p></div>
         </div>
-        <div class="image-panel" style="--panel-image: url('assets/rehearsal-room.png');"></div>
+        <div class="image-panel" id="aboutImage"></div>
       </div>
     </section>
 
     <section class="content band">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Picture templates</span>
-            <h2>Flexible spaces for rehearsals, concerts, and community moments.</h2>
-          </div>
-          <p>These are separate PNG placeholders. Replace each file in the assets folder with real ensemble photography when ready.</p>
+          <div><span class="eyebrow">Picture templates</span><h2>Flexible spaces for rehearsals, concerts, and community moments.</h2></div>
+          <p>Admins can edit the titles/images for these gallery blocks from the home admin panel.</p>
         </div>
-        <div class="gallery-grid">
-          <figure class="picture-card large"><img src="assets/performance-hall.png" alt="Performance image placeholder" /><figcaption class="picture-caption">Feature performance photo</figcaption></figure>
-          <div class="gallery-stack">
-            <figure class="picture-card"><img src="assets/community-visit.png" alt="Community visit image placeholder" /><figcaption class="picture-caption">Community visit</figcaption></figure>
-            <figure class="picture-card"><img src="assets/student-musicians.png" alt="Student musician image placeholder" /><figcaption class="picture-caption">Student musicians</figcaption></figure>
-          </div>
-        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
       </div>
     </section>
 
     <section id="members" class="content">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Members</span>
-            <h2>Needham High School freshmen performing with purpose.</h2>
-          </div>
-          <p>Replace these cards with real student biographies, instruments, roles, and headshots.</p>
+          <div><span class="eyebrow">Members</span><h2>Needham High School freshmen performing with purpose.</h2></div>
+          <p>Add, edit, or delete each member through the admin panel.</p>
         </div>
-        <div class="grid">
-          <article class="card"><div class="photo" style="background-image:url('assets/student-musicians.png');"></div><div class="card-body"><span class="label">Violin</span><h3>Member Name</h3><p>Short biography placeholder for musical background, favorite repertoire, and ensemble role.</p></div></article>
-          <article class="card"><div class="photo" style="background-image:url('assets/rehearsal-room.png');"></div><div class="card-body"><span class="label">Viola</span><h3>Member Name</h3><p>Short biography placeholder for chamber music experience and community performance goals.</p></div></article>
-          <article class="card"><div class="photo" style="background-image:url('assets/performance-hall.png');"></div><div class="card-body"><span class="label">Cello</span><h3>Member Name</h3><p>Short biography placeholder for instrument, musical influences, and upcoming performances.</p></div></article>
-          <article class="card"><div class="photo" style="background-image:url('assets/community-visit.png');"></div><div class="card-body"><span class="label">Piano</span><h3>Member Name</h3><p>Short biography placeholder for accompaniment, arranging, and ensemble leadership.</p></div></article>
-          <article class="card"><div class="photo" style="background-image:url('assets/stage-light.png');"></div><div class="card-body"><span class="label">Winds</span><h3>Member Name</h3><p>Short biography placeholder for section role, sound, and outreach performances.</p></div></article>
-          <article class="card"><div class="photo" style="background-image:url('assets/gallery-light.png');"></div><div class="card-body"><span class="label">Percussion</span><h3>Member Name</h3><p>Short biography placeholder for rhythm, texture, and collaborative performance.</p></div></article>
-        </div>
+        <div class="grid" id="membersGrid"></div>
+        <div class="admin-panel"><h3>Add Member</h3><div id="memberForm"></div></div>
       </div>
     </section>
 
     <section id="concerts" class="content band">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Concerts and announcements</span>
-            <h2>Performances that bring warmth into the room.</h2>
-          </div>
-          <p>Use these placeholders for upcoming concerts, community visits, ticket links, and program updates.</p>
+          <div><span class="eyebrow">Concerts</span><h2>Performances that bring warmth into the room.</h2></div>
+          <p>Each concert entry includes date, description, pieces, and one or more images.</p>
         </div>
-        <div class="grid">
-          <article class="card post"><div class="card-body"><span class="label">June 15, 2026</span><h3>Summer Light Concert</h3><p>Placeholder announcement for a warm chamber program centered on music that brightens the room.</p><a class="post-link" href="#">Read announcement</a></div></article>
-          <article class="card post"><div class="card-body"><span class="label">August 9, 2026</span><h3>Music That Touches Hearts</h3><p>Placeholder text for a community performance at a senior center, school, hospital, or local gathering.</p><a class="post-link" href="#">Read announcement</a></div></article>
-          <article class="card post"><div class="card-body"><span class="label">October 22, 2026</span><h3>Sound as Light Program</h3><p>Placeholder season note with room for venue, repertoire, student performers, and invitation details.</p><a class="post-link" href="#">Read announcement</a></div></article>
-        </div>
+        <div class="grid" id="concertsGrid"></div>
+        <div class="admin-panel"><h3>Add Concert</h3><div id="concertForm"></div></div>
       </div>
     </section>
 
     <section id="videos" class="content">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Concert videos</span>
-            <h2>A video archive of sound becoming light.</h2>
-          </div>
-          <p>Replace these placeholders with embedded YouTube, Vimeo, or hosted concert recordings.</p>
+          <div><span class="eyebrow">Videos</span><h2>A video archive of sound becoming light.</h2></div>
+          <p>Admins can upload video files into the repo or leave a placeholder.</p>
         </div>
-        <div class="grid">
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/video-thumb.png');"><span class="play">&#9658;</span></div><div class="card-body"><h3>Concert Video Title</h3><p>Placeholder description for recording date, venue, and featured repertoire.</p></div></article>
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/recording-thumb.png');"><span class="play">&#9658;</span></div><div class="card-body"><h3>Concert Video Title</h3><p>Placeholder description for performers, program notes, and ensemble highlights.</p></div></article>
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/community-visit.png');"><span class="play">&#9658;</span></div><div class="card-body"><h3>Concert Video Title</h3><p>Placeholder description for a community event or special performance.</p></div></article>
-        </div>
+        <div class="grid" id="videosGrid"></div>
+        <div class="admin-panel"><h3>Add Video</h3><div id="videoForm"></div></div>
       </div>
     </section>
 
     <section id="recordings" class="content band">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Recordings</span>
-            <h2>Each card is ready for a video embed, thumbnail, and description.</h2>
-          </div>
-          <p>Replace the thumbnail PNGs with stills from the real recordings and paste the video embed or link into each card.</p>
+          <div><span class="eyebrow">Recordings</span><h2>Each card is ready for a video embed, thumbnail, and description.</h2></div>
+          <p>Recordings use the same editable system as videos.</p>
         </div>
-        <div class="grid">
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/recording-thumb.png');"><span class="play">&#9658;</span></div><div class="card-body"><span class="recording-meta">Concert recording</span><h3>Recording Title Placeholder</h3><p>A short description for the performance, including where it was recorded, the piece performed, and why it matters to the ensemble.</p></div></article>
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/stage-light.png');"><span class="play">&#9658;</span></div><div class="card-body"><span class="recording-meta">Featured piece</span><h3>Chamber Work Placeholder</h3><p>Describe the music, featured players, and the feeling or story behind this recording.</p></div></article>
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/community-visit.png');"><span class="play">&#9658;</span></div><div class="card-body"><span class="recording-meta">Community performance</span><h3>Outreach Recording Placeholder</h3><p>Use this space for a performance in a community setting, including audience, location, and date.</p></div></article>
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/rehearsal-room.png');"><span class="play">&#9658;</span></div><div class="card-body"><span class="recording-meta">Rehearsal take</span><h3>Rehearsal Clip Placeholder</h3><p>A short note for a rehearsal excerpt, work-in-progress take, or behind-the-scenes preparation clip.</p></div></article>
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/student-musicians.png');"><span class="play">&#9658;</span></div><div class="card-body"><span class="recording-meta">Student feature</span><h3>Solo Feature Placeholder</h3><p>Describe a student soloist, duet, or small chamber group and the piece they are performing.</p></div></article>
-          <article class="card"><div class="video-thumb" style="background-image:url('assets/video-thumb.png');"><span class="play">&#9658;</span></div><div class="card-body"><span class="recording-meta">Archive item</span><h3>Archive Recording Placeholder</h3><p>Use this card for an older performance, seasonal program, or special event recording.</p></div></article>
-        </div>
+        <div class="grid" id="recordingsGrid"></div>
+        <div class="admin-panel"><h3>Add Recording</h3><div id="recordingForm"></div></div>
       </div>
     </section>
 
     <section id="socials" class="content">
       <div class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">Socials</span>
-            <h2>Follow the light from performance to performance.</h2>
-          </div>
-          <p>Add official links, contact information, newsletter signups, and donation channels for Kol Or Ensemble.</p>
+          <div><span class="eyebrow">Socials</span><h2>Follow the light from performance to performance.</h2></div>
+          <p>Phone number, Instagram, and email are all editable.</p>
         </div>
-        <div class="grid">
-          <a class="card" href="#"><div class="card-body"><span class="label">Instagram</span><h3>@kolorensemble</h3><p>Photo updates, rehearsal moments, and concert announcements.</p></div></a>
-          <a class="card" href="#"><div class="card-body"><span class="label">YouTube</span><h3>Kol Or Ensemble</h3><p>Full concert recordings, previews, and featured student performances.</p></div></a>
-          <a class="card" href="#"><div class="card-body"><span class="label">Newsletter</span><h3>Join the List</h3><p>Receive season news, community invitations, and performance updates.</p></div></a>
-        </div>
+        <div class="grid" id="socialsGrid"></div>
+        <div class="admin-panel"><h3>Edit Socials</h3><div id="socialForm"></div></div>
       </div>
     </section>
   </main>
@@ -743,12 +533,443 @@
   <footer class="footer">
     <div class="footer-inner">
       <a class="brand" href="#home"><span class="brand-mark"><img src="assets/kol-or-logo.png" alt="Kol Or Ensemble logo" /></span></a>
-      <span>(c) 2026 Kol Or Ensemble. Single-file HTML template with separate PNG assets.</span>
+      <span>(c) 2026 Kol Or Ensemble. Content powered by data.json.</span>
     </div>
   </footer>
 
+  <div class="modal-backdrop" id="signinModal">
+    <div class="modal">
+      <h2>Admin Sign In</h2>
+      <p>Enter a GitHub token with repo contents read/write permission for <strong>Not-A-Robot-Really/kol-or-ensemble</strong>.</p>
+      <label>GitHub token <input type="password" id="tokenInput" placeholder="github_pat_..." /></label>
+      <div class="form-row-actions">
+        <button class="btn" type="button" onclick="attemptSignIn()">Sign In</button>
+        <button class="btn secondary" type="button" onclick="closeSignIn()">Cancel</button>
+      </div>
+      <p id="signinError" style="color:#ff9b9b;"></p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="editModal">
+    <div class="modal">
+      <h2 id="editTitle">Edit Entry</h2>
+      <div id="editBody"></div>
+      <div class="form-row-actions">
+        <button class="btn" type="button" id="editSaveButton">Save Changes</button>
+        <button class="btn secondary" type="button" onclick="closeEdit()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="status" id="status"></div>
+
   <script>
-    const noteSymbols = ["&#9834;", "&#9835;", "&#9836;", "&#9833;", "&#119070;", "&#9834;", "&#9835;", "&#9836;", "&#9833;", "&#119070;"];
+    const GH = {
+      repo: "Not-A-Robot-Really/kol-or-ensemble",
+      branch: "main",
+      path: "data.json",
+      token: ""
+    };
+
+    const DEFAULT_DATA = {
+      site: {
+        name: "Kol Or Ensemble",
+        tagline: "The Sound of Light that Illuminates the World",
+        heroText: "We are freshmen from Needham High School performing in places to spread the beauty of music and help people know how it can touch hearts.",
+        aboutTitle: "Music shaped to carry clarity, warmth, and hope.",
+        aboutText: "Kol Or Ensemble takes its name from the Hebrew words Kol, meaning sound, and Or, meaning light. Inspired by the idea that music can illuminate hearts and connect the world, the ensemble seeks to bring clarity, warmth, and hope through chamber music. Each performance is an invitation to listen deeply and to experience sound as light.",
+        heroImage: "assets/performance-hall.png",
+        aboutImage: "assets/rehearsal-room.png",
+        gallery: [
+          { title: "Feature performance photo", image: "assets/performance-hall.png" },
+          { title: "Community visit", image: "assets/community-visit.png" },
+          { title: "Student musicians", image: "assets/student-musicians.png" }
+        ]
+      },
+      members: [],
+      concerts: [],
+      videos: [],
+      recordings: [],
+      socials: { phone: "(555) 123-4567", email: "contact@example.org", instagramName: "@kolorensemble", instagramUrl: "https://instagram.com/kolorensemble" }
+    };
+
+    let data = structuredClone(DEFAULT_DATA);
+    let isAdmin = false;
+    let editing = null;
+
+    function showStatus(message, isError = false) {
+      const el = document.getElementById("status");
+      el.textContent = message;
+      el.style.borderColor = isError ? "#b23a3a" : "rgba(237, 191, 74, 0.28)";
+      el.style.color = isError ? "#ffb4b4" : "var(--gold-soft)";
+      el.classList.add("show");
+      clearTimeout(el._timer);
+      if (!isError) el._timer = setTimeout(() => el.classList.remove("show"), 2200);
+    }
+
+    async function loadData() {
+      try {
+        const response = await fetch("data.json?t=" + Date.now());
+        if (!response.ok) throw new Error("data.json not found");
+        const json = await response.json();
+        data = mergeData(structuredClone(DEFAULT_DATA), json);
+      } catch (error) {
+        data = structuredClone(DEFAULT_DATA);
+      }
+      renderAll();
+    }
+
+    function mergeData(base, incoming) {
+      for (const key in incoming) {
+        if (incoming[key] && typeof incoming[key] === "object" && !Array.isArray(incoming[key]) && base[key]) {
+          base[key] = mergeData(base[key], incoming[key]);
+        } else {
+          base[key] = incoming[key];
+        }
+      }
+      return base;
+    }
+
+    async function ghWrite() {
+      if (!GH.token) throw new Error("Sign in first.");
+      showStatus("Saving...");
+      const apiUrl = `https://api.github.com/repos/${GH.repo}/contents/${GH.path}`;
+      const headers = { Authorization: `token ${GH.token}`, "Content-Type": "application/json" };
+      let sha = null;
+      const meta = await fetch(apiUrl, { headers });
+      if (meta.ok) sha = (await meta.json()).sha;
+      const body = {
+        message: "Update Kol Or site data",
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
+        branch: GH.branch
+      };
+      if (sha) body.sha = sha;
+      const res = await fetch(apiUrl, { method: "PUT", headers, body: JSON.stringify(body) });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || "GitHub save failed");
+      }
+      showStatus("Saved to data.json");
+    }
+
+    async function uploadFile(file, folder = "media") {
+      if (!file) return "";
+      if (!GH.token) throw new Error("Sign in first.");
+      showStatus("Uploading file...");
+      const base64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = event => resolve(event.target.result.split(",")[1]);
+        reader.onerror = () => reject(new Error("File read failed"));
+        reader.readAsDataURL(file);
+      });
+      const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, "_");
+      const filename = `${folder}/${Date.now()}_${safeName}`;
+      const apiUrl = `https://api.github.com/repos/${GH.repo}/contents/${filename}`;
+      const headers = { Authorization: `token ${GH.token}`, "Content-Type": "application/json" };
+      const res = await fetch(apiUrl, {
+        method: "PUT",
+        headers,
+        body: JSON.stringify({ message: "Upload media", content: base64, branch: GH.branch })
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || "Upload failed");
+      }
+      return `https://raw.githubusercontent.com/${GH.repo}/${GH.branch}/${filename}`;
+    }
+
+    function renderAll() {
+      renderSite();
+      renderGallery();
+      renderMembers();
+      renderConcerts();
+      renderVideos("videos", "videosGrid");
+      renderVideos("recordings", "recordingsGrid");
+      renderSocials();
+      renderForms();
+      document.body.classList.toggle("admin-mode", isAdmin);
+      const btn = document.getElementById("adminButton");
+      btn.textContent = isAdmin ? "Log Out" : "Admin Sign In";
+      btn.classList.toggle("signed-in", isAdmin);
+    }
+
+    function renderSite() {
+      const site = data.site;
+      document.title = site.name || "Kol Or Ensemble";
+      document.getElementById("siteName").textContent = site.name;
+      document.getElementById("siteTagline").textContent = site.tagline;
+      document.getElementById("heroText").textContent = site.heroText;
+      document.getElementById("heroBg").style.backgroundImage = `url('${site.heroImage}')`;
+      document.getElementById("aboutTitle").textContent = site.aboutTitle;
+      document.getElementById("aboutText").textContent = site.aboutText;
+      document.getElementById("aboutImage").style.backgroundImage = `url('${site.aboutImage}')`;
+      document.getElementById("siteNameInput").value = site.name || "";
+      document.getElementById("siteTaglineInput").value = site.tagline || "";
+      document.getElementById("heroTextInput").value = site.heroText || "";
+      document.getElementById("aboutTitleInput").value = site.aboutTitle || "";
+      document.getElementById("aboutTextInput").value = site.aboutText || "";
+    }
+
+    function renderGallery() {
+      const gallery = data.site.gallery || [];
+      const cards = gallery.map((item, index) => `
+        <figure class="picture-card ${index === 0 ? "large" : ""}">
+          <img src="${item.image || "assets/gallery-light.png"}" alt="${escapeHtml(item.title || "Gallery image")}" />
+          <figcaption class="picture-caption">${escapeHtml(item.title || "Gallery image")}</figcaption>
+          <div class="admin-actions"><button class="mini-btn" onclick="openGalleryEdit(${index})">Edit</button><button class="mini-btn danger" onclick="deleteGallery(${index})">Delete</button></div>
+        </figure>`);
+      document.getElementById("galleryGrid").innerHTML = cards.length > 1
+        ? `<div>${cards[0]}</div><div class="gallery-stack">${cards.slice(1).join("")}</div>`
+        : cards.join("");
+    }
+
+    function renderMembers() {
+      document.getElementById("membersGrid").innerHTML = (data.members || []).map((m, i) => `
+        <article class="card">
+          <div class="photo" style="background-image:url('${m.image || "assets/student-musicians.png"}')"></div>
+          <div class="admin-actions"><button class="mini-btn" onclick="openEntryEdit('members',${i})">Edit</button><button class="mini-btn danger" onclick="deleteEntry('members',${i})">Delete</button></div>
+          <div class="card-body"><span class="label">Grade ${escapeHtml(m.grade || "")} - ${escapeHtml(m.instrument || "")}</span><h3>${escapeHtml(m.name || "Member Name")}</h3><p>${escapeHtml(m.description || "")}</p></div>
+        </article>`).join("");
+    }
+
+    function renderConcerts() {
+      document.getElementById("concertsGrid").innerHTML = (data.concerts || []).map((c, i) => `
+        <article class="card">
+          <div class="photo" style="background-image:url('${(c.images && c.images[0]) || "assets/stage-light.png"}')"></div>
+          <div class="admin-actions"><button class="mini-btn" onclick="openEntryEdit('concerts',${i})">Edit</button><button class="mini-btn danger" onclick="deleteEntry('concerts',${i})">Delete</button></div>
+          <div class="card-body"><span class="label">${escapeHtml(c.date || "Concert Date")}</span><h3>Concert Program</h3><p>${escapeHtml(c.description || "")}</p><p><strong>Pieces:</strong> ${(c.pieces || []).map(escapeHtml).join(", ")}</p></div>
+        </article>`).join("");
+    }
+
+    function renderVideos(type, targetId) {
+      document.getElementById(targetId).innerHTML = (data[type] || []).map((v, i) => `
+        <article class="card">
+          <div class="video-thumb" style="background-image:url('${v.thumbnail || "assets/video-thumb.png"}')">${v.video ? `<video src="${v.video}" controls></video>` : `<span class="play">&#9658;</span>`}</div>
+          <div class="admin-actions"><button class="mini-btn" onclick="openEntryEdit('${type}',${i})">Edit</button><button class="mini-btn danger" onclick="deleteEntry('${type}',${i})">Delete</button></div>
+          <div class="card-body"><span class="label">${escapeHtml(v.piece || "Piece Name")}</span><h3>${escapeHtml(v.title || "Video Title")}</h3><p>${escapeHtml(v.description || "")}</p></div>
+        </article>`).join("");
+    }
+
+    function renderSocials() {
+      const s = data.socials || {};
+      document.getElementById("socialsGrid").innerHTML = `
+        <a class="card" href="tel:${escapeAttr(s.phone || "")}"><div class="card-body"><span class="label">Phone</span><h3>${escapeHtml(s.phone || "")}</h3><p>Call or text for booking and questions.</p></div></a>
+        <a class="card" href="mailto:${escapeAttr(s.email || "")}"><div class="card-body"><span class="label">Email</span><h3>${escapeHtml(s.email || "")}</h3><p>Reach the ensemble by email.</p></div></a>
+        <a class="card" href="${escapeAttr(s.instagramUrl || "#")}"><div class="card-body"><span class="label">Instagram</span><h3>${escapeHtml(s.instagramName || "")}</h3><p>Follow rehearsal moments and concert announcements.</p></div></a>`;
+      document.getElementById("socialForm").innerHTML = `
+        <div class="form-grid">
+          <label>Phone <input id="socialPhone" value="${escapeAttr(s.phone || "")}" /></label>
+          <label>Email <input id="socialEmail" value="${escapeAttr(s.email || "")}" /></label>
+          <label>Instagram name <input id="socialIgName" value="${escapeAttr(s.instagramName || "")}" /></label>
+          <label>Instagram URL <input id="socialIgUrl" value="${escapeAttr(s.instagramUrl || "")}" /></label>
+        </div>
+        <div class="form-row-actions"><button class="btn" onclick="saveSocials()" type="button">Save Socials</button></div>`;
+    }
+
+    function renderForms() {
+      document.getElementById("memberForm").innerHTML = entryFormHtml("members");
+      document.getElementById("concertForm").innerHTML = entryFormHtml("concerts");
+      document.getElementById("videoForm").innerHTML = entryFormHtml("videos");
+      document.getElementById("recordingForm").innerHTML = entryFormHtml("recordings");
+    }
+
+    function entryFormHtml(type, item = {}, prefix = "") {
+      if (type === "members") return `
+        <div class="form-grid">
+          <label>Name <input id="${prefix}${type}-name" value="${escapeAttr(item.name || "")}" /></label>
+          <label>Grade level <input id="${prefix}${type}-grade" value="${escapeAttr(item.grade || "")}" /></label>
+          <label>Instrument <input id="${prefix}${type}-instrument" value="${escapeAttr(item.instrument || "")}" /></label>
+          <label>Picture <input id="${prefix}${type}-image" type="file" accept="image/*" /></label>
+        </div><label style="margin-top:14px;">Description <textarea id="${prefix}${type}-description">${escapeHtml(item.description || "")}</textarea></label>
+        <div class="form-row-actions"><button class="btn" onclick="saveEntry('${type}')" type="button">${editing ? "Save Changes" : "Add Member"}</button></div>`;
+      if (type === "concerts") return `
+        <div class="form-grid">
+          <label>Concert date <input id="${prefix}${type}-date" value="${escapeAttr(item.date || "")}" /></label>
+          <label>Images <input id="${prefix}${type}-images" type="file" accept="image/*" multiple /></label>
+        </div><label style="margin-top:14px;">Description <textarea id="${prefix}${type}-description">${escapeHtml(item.description || "")}</textarea></label>
+        <label style="margin-top:14px;">Pieces played, one per line <textarea id="${prefix}${type}-pieces">${escapeHtml((item.pieces || []).join("\\n"))}</textarea></label>
+        <div class="form-row-actions"><button class="btn" onclick="saveEntry('${type}')" type="button">${editing ? "Save Changes" : "Add Concert"}</button></div>`;
+      return `
+        <div class="form-grid">
+          <label>Video title <input id="${prefix}${type}-title" value="${escapeAttr(item.title || "")}" /></label>
+          <label>Piece name <input id="${prefix}${type}-piece" value="${escapeAttr(item.piece || "")}" /></label>
+          <label>Actual video <input id="${prefix}${type}-video" type="file" accept="video/*" /></label>
+          <label>Thumbnail image <input id="${prefix}${type}-thumbnail" type="file" accept="image/*" /></label>
+        </div><label style="margin-top:14px;">Small description <textarea id="${prefix}${type}-description">${escapeHtml(item.description || "")}</textarea></label>
+        <div class="form-row-actions"><button class="btn" onclick="saveEntry('${type}')" type="button">${editing ? "Save Changes" : "Add Entry"}</button></div>`;
+    }
+
+    async function saveSiteSettings() {
+      try {
+        data.site.name = document.getElementById("siteNameInput").value.trim();
+        data.site.tagline = document.getElementById("siteTaglineInput").value.trim();
+        data.site.heroText = document.getElementById("heroTextInput").value.trim();
+        data.site.aboutTitle = document.getElementById("aboutTitleInput").value.trim();
+        data.site.aboutText = document.getElementById("aboutTextInput").value.trim();
+        const heroFile = document.getElementById("heroImageInput").files[0];
+        const aboutFile = document.getElementById("aboutImageInput").files[0];
+        if (heroFile) data.site.heroImage = await uploadFile(heroFile, "images");
+        if (aboutFile) data.site.aboutImage = await uploadFile(aboutFile, "images");
+        await ghWrite();
+        renderAll();
+      } catch (error) { showStatus(error.message, true); }
+    }
+
+    async function saveSocials() {
+      try {
+        data.socials = {
+          phone: document.getElementById("socialPhone").value.trim(),
+          email: document.getElementById("socialEmail").value.trim(),
+          instagramName: document.getElementById("socialIgName").value.trim(),
+          instagramUrl: document.getElementById("socialIgUrl").value.trim()
+        };
+        await ghWrite();
+        renderAll();
+      } catch (error) { showStatus(error.message, true); }
+    }
+
+    async function saveEntry(type) {
+      try {
+        const prefix = editing ? "edit-" : "";
+        let item;
+        if (type === "members") {
+          item = {
+            name: val(`${prefix}${type}-name`),
+            grade: val(`${prefix}${type}-grade`),
+            instrument: val(`${prefix}${type}-instrument`),
+            description: val(`${prefix}${type}-description`),
+            image: editing ? (data[type][editing.index].image || "") : ""
+          };
+          const file = document.getElementById(`${prefix}${type}-image`).files[0];
+          if (file) item.image = await uploadFile(file, "images");
+        } else if (type === "concerts") {
+          item = {
+            date: val(`${prefix}${type}-date`),
+            description: val(`${prefix}${type}-description`),
+            pieces: val(`${prefix}${type}-pieces`).split("\\n").map(x => x.trim()).filter(Boolean),
+            images: editing ? (data[type][editing.index].images || []) : []
+          };
+          const files = [...document.getElementById(`${prefix}${type}-images`).files];
+          if (files.length) item.images = [];
+          for (const file of files) item.images.push(await uploadFile(file, "images"));
+          if (!item.images.length) item.images = ["assets/stage-light.png"];
+        } else {
+          item = {
+            title: val(`${prefix}${type}-title`),
+            piece: val(`${prefix}${type}-piece`),
+            description: val(`${prefix}${type}-description`),
+            video: editing ? (data[type][editing.index].video || "") : "",
+            thumbnail: editing ? (data[type][editing.index].thumbnail || "") : ""
+          };
+          const videoFile = document.getElementById(`${prefix}${type}-video`).files[0];
+          const thumbFile = document.getElementById(`${prefix}${type}-thumbnail`).files[0];
+          if (videoFile) item.video = await uploadFile(videoFile, "media");
+          if (thumbFile) item.thumbnail = await uploadFile(thumbFile, "images");
+          if (!item.thumbnail) item.thumbnail = type === "recordings" ? "assets/recording-thumb.png" : "assets/video-thumb.png";
+        }
+        if (editing) {
+          data[type][editing.index] = item;
+          closeEdit();
+        } else {
+          data[type].push(item);
+        }
+        await ghWrite();
+        editing = null;
+        renderAll();
+      } catch (error) { showStatus(error.message, true); }
+    }
+
+    function openEntryEdit(type, index) {
+      editing = { type, index };
+      document.getElementById("editTitle").textContent = `Edit ${type}`;
+      document.getElementById("editBody").innerHTML = entryFormHtml(type, data[type][index], "edit-");
+      document.getElementById("editSaveButton").onclick = () => saveEntry(type);
+      document.getElementById("editModal").classList.add("open");
+    }
+
+    function closeEdit() {
+      editing = null;
+      document.getElementById("editModal").classList.remove("open");
+      document.getElementById("editSaveButton").onclick = () => editing && saveEntry(editing.type);
+      renderForms();
+    }
+
+    async function deleteEntry(type, index) {
+      if (!confirm("Delete this entry?")) return;
+      data[type].splice(index, 1);
+      try { await ghWrite(); renderAll(); } catch (error) { showStatus(error.message, true); }
+    }
+
+    function openGalleryEdit(index) {
+      const item = data.site.gallery[index];
+      editing = { type: "gallery", index };
+      document.getElementById("editTitle").textContent = "Edit gallery image";
+      document.getElementById("editBody").innerHTML = `
+        <div class="form-grid">
+          <label>Title <input id="gallery-title" value="${escapeAttr(item.title || "")}" /></label>
+          <label>Image <input id="gallery-image" type="file" accept="image/*" /></label>
+        </div>`;
+      document.getElementById("editSaveButton").onclick = saveGalleryEdit;
+      document.getElementById("editModal").classList.add("open");
+    }
+
+    async function saveGalleryEdit() {
+      try {
+        const item = data.site.gallery[editing.index];
+        item.title = val("gallery-title");
+        const file = document.getElementById("gallery-image").files[0];
+        if (file) item.image = await uploadFile(file, "images");
+        await ghWrite();
+        closeEdit();
+        renderAll();
+      } catch (error) { showStatus(error.message, true); }
+    }
+
+    async function deleteGallery(index) {
+      if (!confirm("Delete this gallery image?")) return;
+      data.site.gallery.splice(index, 1);
+      try { await ghWrite(); renderAll(); } catch (error) { showStatus(error.message, true); }
+    }
+
+    function val(id) { return document.getElementById(id).value.trim(); }
+    function escapeHtml(value) { return String(value ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+    function escapeAttr(value) { return escapeHtml(value); }
+
+    function openSignIn() {
+      document.getElementById("signinModal").classList.add("open");
+      document.getElementById("signinError").textContent = "";
+      document.getElementById("tokenInput").value = "";
+      setTimeout(() => document.getElementById("tokenInput").focus(), 50);
+    }
+    function closeSignIn() { document.getElementById("signinModal").classList.remove("open"); }
+    async function attemptSignIn() {
+      const token = document.getElementById("tokenInput").value.trim();
+      const error = document.getElementById("signinError");
+      if (!token) { error.textContent = "Enter a GitHub token."; return; }
+      error.textContent = "Verifying...";
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GH.repo}/contents/${GH.path}`, { headers: { Authorization: `token ${token}` } });
+        if (res.status !== 200 && res.status !== 404) throw new Error("Invalid token or repo permission.");
+        GH.token = token;
+        isAdmin = true;
+        closeSignIn();
+        renderAll();
+        showStatus("Admin signed in");
+      } catch (err) {
+        error.textContent = err.message;
+      }
+    }
+    function logOut() {
+      GH.token = "";
+      isAdmin = false;
+      renderAll();
+      showStatus("Logged out");
+    }
+    document.getElementById("adminButton").addEventListener("click", () => isAdmin ? logOut() : openSignIn());
+    document.getElementById("tokenInput").addEventListener("keydown", event => { if (event.key === "Enter") attemptSignIn(); });
+    document.getElementById("editSaveButton").onclick = () => editing && saveEntry(editing.type);
+
+    const noteSymbols = ["&#9834;", "&#9835;", "&#9836;", "&#9833;", "&#119070;", "&#9834;", "&#9835;", "&#9836;"];
     const noteSettings = [
       { side: "left", x: 1.4, base: 10, speed: 0.72, sway: 70, spin: -22 },
       { side: "left", x: 4.8, base: 34, speed: 1.18, sway: 104, spin: 34 },
@@ -757,19 +978,15 @@
       { side: "right", x: 5.2, base: 47, speed: 1.32, sway: -118, spin: -44 },
       { side: "right", x: 1.8, base: 76, speed: 1.06, sway: -92, spin: 46 },
       { side: "left", x: 7.4, base: 82, speed: 1.48, sway: 126, spin: 52 },
-      { side: "right", x: 7.0, base: 7, speed: 0.62, sway: -64, spin: -18 },
-      { side: "left", x: 1.0, base: 48, speed: 1.65, sway: 112, spin: 40 },
-      { side: "right", x: 1.2, base: 62, speed: 1.55, sway: -110, spin: -36 }
+      { side: "right", x: 7.0, base: 7, speed: 0.62, sway: -64, spin: -18 }
     ];
-
-    function createLightLayer() {
+    function createLights() {
       const lights = document.createElement("div");
       lights.className = "page-lights";
       lights.setAttribute("aria-hidden", "true");
       lights.innerHTML = "<span></span><span></span><span></span><span></span>";
       document.body.prepend(lights);
     }
-
     function createNotes() {
       const layer = document.createElement("div");
       layer.className = "notes-layer";
@@ -783,41 +1000,34 @@
         note.dataset.sway = setting.sway;
         note.dataset.spin = setting.spin;
         note.style[setting.side] = setting.x + "vw";
-        note.style.animationDelay = (index * -0.42) + "s";
         layer.appendChild(note);
       });
       document.body.prepend(layer);
       return layer.querySelectorAll(".note");
     }
-
     const notes = createNotes();
-    createLightLayer();
+    createLights();
     let easedScroll = window.scrollY || 0;
     let lastFrame = 0;
-
     function updateParallax() {
-      const targetScroll = window.scrollY || 0;
-      easedScroll += (targetScroll - easedScroll) * 0.12;
-      const scrollY = easedScroll;
+      easedScroll += ((window.scrollY || 0) - easedScroll) * 0.12;
       const viewHeight = window.innerHeight || 800;
       const wrapHeight = viewHeight + 260;
       const time = performance.now() / 1000;
-
       notes.forEach((note, index) => {
         const base = (Number(note.dataset.base) / 100) * viewHeight;
         const speed = Number(note.dataset.speed);
         const swayPower = Number(note.dataset.sway);
         const spin = Number(note.dataset.spin);
-        const wave = Math.sin((scrollY / 85) + time + index * 1.35) * swayPower;
-        const bob = Math.cos((scrollY / 120) + time * 1.8 + index) * 24;
-        const wrapped = ((base + scrollY * speed + bob) % wrapHeight + wrapHeight) % wrapHeight;
+        const wave = Math.sin((easedScroll / 85) + time + index * 1.35) * swayPower;
+        const bob = Math.cos((easedScroll / 120) + time * 1.8 + index) * 24;
+        const wrapped = ((base + easedScroll * speed + bob) % wrapHeight + wrapHeight) % wrapHeight;
         const y = wrapped - 120;
         const scale = 0.82 + (Math.sin(time * 1.4 + index) + 1) * 0.16;
-        const rotation = (scrollY * 0.055 * speed) + spin + wave / 7;
+        const rotation = (easedScroll * 0.055 * speed) + spin + wave / 7;
         note.style.transform = `translate3d(${wave}px, ${y}px, 0) rotate(${rotation}deg) scale(${scale})`;
       });
     }
-
     function tick(now) {
       if (now - lastFrame > 42) {
         updateParallax();
@@ -825,8 +1035,10 @@
       }
       window.requestAnimationFrame(tick);
     }
-
+    loadData();
     window.requestAnimationFrame(tick);
   </script>
 </body>
 </html>
+index.html
+Displaying index.html.
