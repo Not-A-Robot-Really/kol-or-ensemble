@@ -43,6 +43,13 @@
       "instrument": "Violin",
       "description": "Needham High Schooler",
       "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779407161308_20260221_163828.jpg"
+    },
+    {
+      "name": "Peter Shin",
+      "grade": "9",
+      "instrument": "Cello",
+      "description": "Needham High Schooler",
+      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779407240931_20260221_163851.jpg"
     }
   ],
   "concerts": [
