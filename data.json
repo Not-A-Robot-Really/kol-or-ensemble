@@ -54,14 +54,13 @@
   ],
   "concerts": [
     {
-      "date": "June 15, 2026",
-      "description": "Placeholder announcement for a warm chamber program centered on music that brightens the room.",
+      "date": "May 16, 2026",
+      "description": "May concert at Wingate! \n\n@7:00 PM! Lots of fun! Join us if you can!",
       "pieces": [
-        "Piece Title Placeholder",
-        "Second Piece Placeholder"
+        "Humoresque by Antonin Dvorak\nMoon River by Henry Mancini and soloist Zirui Wang\nShipping Up to Boston by Dropkick Murphys\nRomanze by Max Bruch and soloist Daniel Choi\nLullaby by Brahms\nWhat a wonderful world by Louis Armstrong and duet by Jonah Black and Peter Shin\nYou Raise me Up by Josh Groban\nJonah's Solo"
       ],
       "images": [
-        "assets/stage-light.png"
+        "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779407678644_20260516_194052.jpg"
       ]
     }
   ],
