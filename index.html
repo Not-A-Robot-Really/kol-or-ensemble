@@ -9,12 +9,12 @@
   <style>
     :root {
       --bg: #030303;
-      --panel: #0f0e0b;
-      --panel-2: #17140e;
-      --ink: #fff6dc;
-      --muted: #cfc3aa;
+      --panel: #030303;
+      --panel-2: #030303;
+      --ink: #ffffff;
+      --muted: #c8c8c8;
       --gold: #edbf4a;
-      --gold-soft: #ffe7a2;
+      --gold-soft: #ffffff;
       --line: rgba(237, 191, 74, 0.22);
       --max: 1160px;
     }
@@ -64,28 +64,31 @@
       display: grid;
       place-items: center;
       border: 1px solid rgba(237, 191, 74, 0.18);
-      background: #020202;
+      background: #030303;
       box-shadow: 0 0 22px rgba(237, 191, 74, 0.12);
       overflow: hidden;
     }
     .brand-mark img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
-    nav { display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap; }
+    nav { display: flex; align-items: center; justify-content: flex-end; gap: 16px; flex-wrap: wrap; }
     nav a, .admin-link {
-      color: #eadfc7;
+      color: #ffffff;
       font-size: 0.88rem;
-      padding: 9px 10px;
+      padding: 10px 13px;
       border: 1px solid transparent;
       background: transparent;
       cursor: pointer;
       transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
     }
     nav a:hover, nav a:focus-visible, .admin-link:hover {
-      color: var(--gold-soft);
-      border-color: rgba(237, 191, 74, 0.28);
-      background: rgba(237, 191, 74, 0.08);
+      color: #030303;
+      border-color: #ffffff;
+      background: #ffffff;
       outline: none;
     }
-    .admin-link.signed-in { color: #111; background: var(--gold); border-color: var(--gold); font-weight: 800; }
+    .admin-link.signed-in { color: #030303; background: var(--gold); border-color: var(--gold); font-weight: 800; }
 
     .hero {
       position: relative;
@@ -162,7 +165,7 @@
       text-shadow: 0 0 26px rgba(237, 191, 74, 0.22), 0 14px 48px rgba(0, 0, 0, 0.7);
     }
     h2 { color: var(--ink); font-size: clamp(2.1rem, 4vw, 4rem); }
-    h3 { color: var(--gold-soft); font-size: 1.38rem; }
+    h3 { color: #ffffff; font-size: 1.38rem; }
     p { color: var(--muted); }
     .hero-copy { max-width: 690px; margin: 24px 0 34px; font-size: 1.1rem; }
     .actions { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -173,18 +176,36 @@
       min-height: 46px;
       padding: 0 18px;
       border: 1px solid rgba(237, 191, 74, 0.38);
-      background: #e7b73d;
-      color: #100c05;
+      background: var(--gold);
+      color: #030303;
       font-weight: 850;
       box-shadow: 0 0 24px rgba(237, 191, 74, 0.22), 0 16px 34px rgba(0, 0, 0, 0.32);
       transition: transform 160ms ease, background 160ms ease;
       cursor: pointer;
     }
-    .btn:hover { background: #ffd56e; transform: translateY(-1px); }
+    .btn:hover { background: #ffffff; transform: translateY(-1px); }
     .btn.secondary { background: rgba(4, 4, 4, 0.72); color: var(--gold-soft); }
 
+    .icon {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: 0 0 auto;
+    }
+    .section-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--gold);
+      margin-bottom: 14px;
+      filter: drop-shadow(0 0 12px rgba(237, 191, 74, 0.28));
+    }
+
     section.content { position: relative; padding: 94px 0; }
-    .band { background: #080806; border-block: 1px solid rgba(237, 191, 74, 0.12); }
+    .band { background: #030303; border-block: 1px solid rgba(237, 191, 74, 0.12); }
     .section-head {
       display: grid;
       grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.42fr);
@@ -235,8 +256,8 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: #efc24d;
-      color: #080603;
+      background: var(--gold);
+      color: #030303;
       box-shadow: 0 0 34px rgba(237, 191, 74, 0.42), 0 18px 45px rgba(0, 0, 0, 0.45);
       font-size: 1.35rem;
       padding-left: 4px;
@@ -257,7 +278,7 @@
       min-height: 260px;
       margin: 0;
       border: 1px solid rgba(237, 191, 74, 0.16);
-      background: #0c0b09;
+      background: #030303;
       box-shadow: 0 22px 56px rgba(0, 0, 0, 0.28);
       overflow: hidden;
     }
@@ -297,7 +318,7 @@
       margin: 30px 0 0;
       padding: 22px;
       border: 1px solid rgba(237, 191, 74, 0.28);
-      background: #11100d;
+      background: #030303;
       box-shadow: 0 18px 50px rgba(0,0,0,0.28);
     }
     body.admin-mode .admin-panel { display: block; }
@@ -308,7 +329,7 @@
     input, textarea, select {
       width: 100%;
       border: 1px solid rgba(237, 191, 74, 0.22);
-      background: #050505;
+      background: #030303;
       color: var(--ink);
       padding: 10px 11px;
       font: inherit;
@@ -316,14 +337,14 @@
     textarea { min-height: 94px; resize: vertical; }
     input[type="file"] { padding: 8px; }
     .form-row-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-    .danger { background: #5c1717; color: #fff; border-color: #b23a3a; }
+    .danger { background: #030303; color: #ffffff; border-color: #ffffff; }
     .status {
       position: fixed;
       right: 18px;
       bottom: 18px;
       z-index: 100;
       padding: 10px 14px;
-      background: #11100d;
+      background: #030303;
       color: var(--gold-soft);
       border: 1px solid var(--line);
       opacity: 0;
@@ -346,7 +367,7 @@
       max-height: min(86vh, 780px);
       overflow: auto;
       border: 1px solid rgba(237, 191, 74, 0.32);
-      background: #0d0c09;
+      background: #030303;
       box-shadow: 0 30px 90px rgba(0,0,0,0.62);
       padding: 24px;
     }
@@ -412,13 +433,13 @@
         <span class="brand-mark"><img src="assets/kol-or-logo.png" alt="Kol Or Ensemble logo" /></span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href="#home">Home</a>
-        <a href="#members">Members</a>
-        <a href="#concerts">Concerts</a>
-        <a href="#videos">Videos</a>
-        <a href="#recordings">Recordings</a>
-        <a href="#socials">Socials</a>
-        <button class="admin-link" id="adminButton" type="button">Admin Sign In</button>
+        <a href="#home"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.5V20h14v-9.5"/><path d="M9 20v-6h6v6"/></svg>Home</a>
+        <a href="#members"><svg class="icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Members</a>
+        <a href="#concerts"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Concerts</a>
+        <a href="#videos"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3V9z"/></svg>Videos</a>
+        <a href="#recordings"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3"/><path d="M12 18v3"/></svg>Recordings</a>
+        <a href="#socials"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg>Socials</a>
+        <button class="admin-link" id="adminButton" type="button"><svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Sign In</button>
       </nav>
     </div>
   </header>
@@ -467,8 +488,8 @@
     <section class="content band">
       <div class="container">
         <div class="section-head">
-          <div><span class="eyebrow">Picture templates</span><h2>Flexible spaces for rehearsals, concerts, and community moments.</h2></div>
-          <p>Admins can edit the titles/images for these gallery blocks from the home admin panel.</p>
+          <div><svg class="icon section-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="eyebrow">Gallery</span><h2>Rehearsals, concerts, and community moments.</h2></div>
+          <p>A collection of scenes from Kol Or Ensemble performances and gatherings.</p>
         </div>
         <div class="gallery-grid" id="galleryGrid"></div>
       </div>
@@ -477,8 +498,8 @@
     <section id="members" class="content">
       <div class="container">
         <div class="section-head">
-          <div><span class="eyebrow">Members</span><h2>Needham High School freshmen performing with purpose.</h2></div>
-          <p>Add, edit, or delete each member through the admin panel.</p>
+          <div><svg class="icon section-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg><span class="eyebrow">Members</span><h2>Needham High School freshmen performing with purpose.</h2></div>
+          <p>Meet the musicians bringing sound and light to each performance.</p>
         </div>
         <div class="grid" id="membersGrid"></div>
         <div class="admin-panel"><h3>Add Member</h3><div id="memberForm"></div></div>
@@ -488,7 +509,7 @@
     <section id="concerts" class="content band">
       <div class="container">
         <div class="section-head">
-          <div><span class="eyebrow">Concerts</span><h2>Performances that bring warmth into the room.</h2></div>
+          <div><svg class="icon section-icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span class="eyebrow">Concerts</span><h2>Performances that bring warmth into the room.</h2></div>
           <p>Each concert entry includes date, description, pieces, and one or more images.</p>
         </div>
         <div class="grid" id="concertsGrid"></div>
@@ -499,8 +520,8 @@
     <section id="videos" class="content">
       <div class="container">
         <div class="section-head">
-          <div><span class="eyebrow">Videos</span><h2>A video archive of sound becoming light.</h2></div>
-          <p>Admins can upload video files into the repo or leave a placeholder.</p>
+          <div><svg class="icon section-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3V9z"/></svg><span class="eyebrow">Videos</span><h2>A video archive of sound becoming light.</h2></div>
+          <p>Watch selected performances and concert moments.</p>
         </div>
         <div class="grid" id="videosGrid"></div>
         <div class="admin-panel"><h3>Add Video</h3><div id="videoForm"></div></div>
@@ -510,8 +531,8 @@
     <section id="recordings" class="content band">
       <div class="container">
         <div class="section-head">
-          <div><span class="eyebrow">Recordings</span><h2>Each card is ready for a video embed, thumbnail, and description.</h2></div>
-          <p>Recordings use the same editable system as videos.</p>
+          <div><svg class="icon section-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3"/><path d="M12 18v3"/></svg><span class="eyebrow">Recordings</span><h2>Recorded performances and featured pieces.</h2></div>
+          <p>Listen back to chamber works, concert selections, and featured performances.</p>
         </div>
         <div class="grid" id="recordingsGrid"></div>
         <div class="admin-panel"><h3>Add Recording</h3><div id="recordingForm"></div></div>
@@ -521,8 +542,8 @@
     <section id="socials" class="content">
       <div class="container">
         <div class="section-head">
-          <div><span class="eyebrow">Socials</span><h2>Follow the light from performance to performance.</h2></div>
-          <p>Phone number, Instagram, and email are all editable.</p>
+          <div><svg class="icon section-icon" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg><span class="eyebrow">Socials</span><h2>Follow the light from performance to performance.</h2></div>
+          <p>Stay connected with Kol Or Ensemble.</p>
         </div>
         <div class="grid" id="socialsGrid"></div>
         <div class="admin-panel"><h3>Edit Socials</h3><div id="socialForm"></div></div>
@@ -539,14 +560,14 @@
 
   <div class="modal-backdrop" id="signinModal">
     <div class="modal">
-      <h2>Admin Sign In</h2>
+      <h2>Sign In</h2>
       <p>Enter a GitHub token with repo contents read/write permission for <strong>Not-A-Robot-Really/kol-or-ensemble</strong>.</p>
       <label>GitHub token <input type="password" id="tokenInput" placeholder="github_pat_..." /></label>
       <div class="form-row-actions">
         <button class="btn" type="button" onclick="attemptSignIn()">Sign In</button>
         <button class="btn secondary" type="button" onclick="closeSignIn()">Cancel</button>
       </div>
-      <p id="signinError" style="color:#ff9b9b;"></p>
+      <p id="signinError" style="color:#edbf4a;"></p>
     </div>
   </div>
 
@@ -600,8 +621,8 @@
     function showStatus(message, isError = false) {
       const el = document.getElementById("status");
       el.textContent = message;
-      el.style.borderColor = isError ? "#b23a3a" : "rgba(237, 191, 74, 0.28)";
-      el.style.color = isError ? "#ffb4b4" : "var(--gold-soft)";
+      el.style.borderColor = isError ? "#ffffff" : "rgba(237, 191, 74, 0.28)";
+      el.style.color = isError ? "#ffffff" : "var(--gold-soft)";
       el.classList.add("show");
       clearTimeout(el._timer);
       if (!isError) el._timer = setTimeout(() => el.classList.remove("show"), 2200);
@@ -689,7 +710,9 @@
       renderForms();
       document.body.classList.toggle("admin-mode", isAdmin);
       const btn = document.getElementById("adminButton");
-      btn.textContent = isAdmin ? "Log Out" : "Admin Sign In";
+      btn.innerHTML = isAdmin
+        ? `<svg class="icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Log Out`
+        : `<svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Sign In`;
       btn.classList.toggle("signed-in", isAdmin);
     }
 
