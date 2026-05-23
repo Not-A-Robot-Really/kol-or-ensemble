@@ -24,7 +24,15 @@
   },
   "members": [],
   "concerts": [],
-  "videos": [],
+  "videos": [
+    {
+      "title": "May Concert Video 1",
+      "piece": "Shipping Up to Boston",
+      "description": "Kol Or plays Shipping Up to Boston by the Dropkick Murphys, arranged for a strings orchestra.",
+      "video": "https://drive.google.com/file/d/1RQbdAOwnLykRmdGeVdhbpzZ8FnMZ5tXF/view?usp=sharing",
+      "thumbnail": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779576341510_shipping.jpeg"
+    }
+  ],
   "recordings": [],
   "socials": {
     "phone": "(555) 123-4567",
