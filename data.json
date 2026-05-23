@@ -52,7 +52,18 @@
       "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779577924161_20260221_163851.jpg"
     }
   ],
-  "concerts": [],
+  "concerts": [
+    {
+      "date": "May 16, 2026",
+      "description": "With Gratitude: Kol Or's May Concert at Wingate, Needham\nIn this beautiful month of May, we dedicate this concert to our parents and families. Thank you for your endless love, support, and encouragement. Tonight's music is our small gift of appreciation.",
+      "pieces": [
+        "1) Humoresque, by Antonin Dvorak\n2) Moon River by Henry Mancini: Solo by Zirui Wang\n3) Shipping Up to Boston by the Dropkick Murphys\n4) Romanze by Max Bruck: Solo by Daniel Choi\n5) Lullaby by Brahms\n6) What a wonderful world by Louis Armstrong: Duet by Jonah and Peter\n7) You Raise me Up by Josh Groban\n8) Bach's 1st Cello Suite: Solo by Jonah"
+      ],
+      "images": [
+        "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779578303279_20260516_185822.jpg"
+      ]
+    }
+  ],
   "videos": [
     {
       "title": "Shipping Up to Boston",
