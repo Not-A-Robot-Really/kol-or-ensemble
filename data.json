@@ -3,91 +3,33 @@
     "name": "Kol Or Ensemble",
     "tagline": "The Sound of Light that Illuminates the World",
     "heroText": "We are freshmen from Needham High School performing in places to spread the beauty of music and help people know how it can touch hearts.",
-    "aboutTitle": "Music helps bring warth to the world",
+    "aboutTitle": "Music shaped to carry clarity, warmth, and hope.",
     "aboutText": "Kol Or Ensemble takes its name from the Hebrew words Kol, meaning sound, and Or, meaning light. Inspired by the idea that music can illuminate hearts and connect the world, the ensemble seeks to bring clarity, warmth, and hope through chamber music. Each performance is an invitation to listen deeply and to experience sound as light.",
-    "heroImage": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779404841506_20260221_160022.jpg",
-    "aboutImage": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779404844116_20260516_194052.jpg",
+    "heroImage": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779576139925_20260516_185822.jpg",
+    "aboutImage": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779576141477_20260516_194052.jpg",
     "gallery": [
       {
-        "title": "2026 May Concert",
-        "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779405029637_20260516_185822__1_.jpg"
+        "title": "Feature performance photo",
+        "image": "assets/performance-hall.png"
       },
       {
-        "title": "2025 December Concert",
-        "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779404702799_20260516_193425.jpg"
+        "title": "Community visit",
+        "image": "assets/community-visit.png"
       },
       {
-        "title": "2026 Febuary Concert",
-        "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779404965281_20260221_155212.jpg"
+        "title": "Student musicians",
+        "image": "assets/student-musicians.png"
       }
     ]
   },
-  "members": [
-    {
-      "name": "Daniel Choi",
-      "grade": "9",
-      "instrument": "Viola",
-      "description": "Needham High Schooler",
-      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779405155076_20260221_163844.jpg"
-    },
-    {
-      "name": "Jonah Black",
-      "grade": "9",
-      "instrument": "Cello",
-      "description": "Needham High Schooler",
-      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779407075405_20260221_163839.jpg"
-    },
-    {
-      "name": "Zirui Wang",
-      "grade": "9",
-      "instrument": "Violin",
-      "description": "Needham High Schooler",
-      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779407161308_20260221_163828.jpg"
-    },
-    {
-      "name": "Peter Shin",
-      "grade": "9",
-      "instrument": "Cello",
-      "description": "Needham High Schooler",
-      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779407240931_20260221_163851.jpg"
-    }
-  ],
-  "concerts": [
-    {
-      "date": "May 16, 2026",
-      "description": "May concert at Wingate! \n\n@7:00 PM! Lots of fun! Join us if you can!",
-      "pieces": [
-        "Humoresque by Antonin Dvorak\nMoon River by Henry Mancini and soloist Zirui Wang\nShipping Up to Boston by Dropkick Murphys\nRomanze by Max Bruch and soloist Daniel Choi\nLullaby by Brahms\nWhat a wonderful world by Louis Armstrong and duet by Jonah Black and Peter Shin\nYou Raise me Up by Josh Groban\nJonah's Solo"
-      ],
-      "images": [
-        "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779407678644_20260516_194052.jpg"
-      ]
-    }
-  ],
-  "videos": [
-    {
-      "title": "Concert Video Title",
-      "piece": "Piece Name Placeholder",
-      "description": "Placeholder description for recording date, venue, and featured repertoire.",
-      "video": "",
-      "thumbnail": "assets/video-thumb.png"
-    }
-  ],
-  "recordings": [
-    {
-      "title": "Recording Title Placeholder",
-      "piece": "Piece Name Placeholder",
-      "description": "A short description for the performance, including where it was recorded, the piece performed, and why it matters to the ensemble.",
-      "video": "",
-      "thumbnail": "assets/recording-thumb.png"
-    }
-  ],
+  "members": [],
+  "concerts": [],
+  "videos": [],
+  "recordings": [],
   "socials": {
-    "phone": "857-230-5135",
-    "email": "kolornsemble@gmail.com",
-    "instagramName": "@kolorensembleneedham",
-    "instagramUrl": "https://www.instagram.com/kolorensembleneedham/"
+    "phone": "(555) 123-4567",
+    "email": "contact@example.org",
+    "instagramName": "@kolorensemble",
+    "instagramUrl": "https://instagram.com/kolorensemble"
   }
 }
-data.json
-Displaying data.json.
