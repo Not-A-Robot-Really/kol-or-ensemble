@@ -22,7 +22,15 @@
       }
     ]
   },
-  "members": [],
+  "members": [
+    {
+      "name": "Daniel Choi",
+      "grade": "Freshman",
+      "instrument": "Viola",
+      "description": "Violist and member of Needham High School's chamber orchestra. Qualified for MMEA Senior Districts.",
+      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779577574295_20260221_163844.jpg"
+    }
+  ],
   "concerts": [],
   "videos": [
     {
