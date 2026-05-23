@@ -43,6 +43,13 @@
       "instrument": "Violin",
       "description": "Violinist in Needham High School's Strings Orchestra.",
       "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779577840148_20260221_163828.jpg"
+    },
+    {
+      "name": "Peter Shin",
+      "grade": "Freshman",
+      "instrument": "Cello",
+      "description": "Cellist and member of Needham High School's Strings Orchestra.",
+      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779577924161_20260221_163851.jpg"
     }
   ],
   "concerts": [],
