@@ -36,6 +36,13 @@
       "instrument": "Cello",
       "description": "Cellist for Needham High School's chamber orchestra. Qualified for MMEA Junior Districts.",
       "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779577650758_20260221_163839.jpg"
+    },
+    {
+      "name": "Zirui Wang",
+      "grade": "Freshman",
+      "instrument": "Violin",
+      "description": "Violinist in Needham High School's Strings Orchestra.",
+      "image": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779577840148_20260221_163828.jpg"
     }
   ],
   "concerts": [],
