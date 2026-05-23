@@ -106,7 +106,7 @@
       background-position: center;
       background-size: cover;
       background-attachment: fixed;
-      opacity: 0.72;
+      opacity: 0.9;
       transform: scale(1.03);
       z-index: -3;
     }
@@ -114,7 +114,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.56);
+      background: rgba(0, 0, 0, 0.38);
       box-shadow: inset 0 -180px 140px #030303, inset 0 120px 120px rgba(0, 0, 0, 0.7);
       z-index: -2;
     }
@@ -129,6 +129,9 @@
       transform: rotate(14deg);
       opacity: 0.72;
       z-index: -1;
+    }
+    .hero .light-beam {
+      display: none;
     }
     .container, .hero-inner {
       width: min(var(--max), calc(100% - 32px));
@@ -230,6 +233,9 @@
     .hero-inner > .eyebrow::before {
       order: 2;
     }
+    .hero-inner > .eyebrow::before {
+      display: none;
+    }
     .section-head > div > .eyebrow .section-icon,
     .hero-inner > .eyebrow .section-icon {
       order: 1;
@@ -284,6 +290,14 @@
       border-bottom: 1px solid rgba(237, 191, 74, 0.14);
     }
     .video-thumb { display: grid; place-items: center; min-height: 190px; }
+    .video-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 190px;
+      border: 0;
+      display: block;
+      background: #030303;
+    }
     .play {
       width: 64px;
       height: 64px;
@@ -798,13 +812,36 @@
         </article>`).join("");
     }
 
+    function renderVideoMedia(v) {
+      const raw = v.video || v.videoUrl || "";
+      const embed = toEmbeddableVideoUrl(raw);
+      if (embed) {
+        return `<iframe class="video-frame" src="${escapeAttr(embed)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+      }
+      if (raw) {
+        return `<video class="video-frame" src="${escapeAttr(raw)}" controls></video>`;
+      }
+      return `<span class="play">&#9658;</span>`;
+    }
+
     function renderVideos(type, targetId) {
       document.getElementById(targetId).innerHTML = (data[type] || []).map((v, i) => `
         <article class="card">
-          <div class="video-thumb" style="background-image:url('${v.thumbnail || "assets/video-thumb.png"}')">${v.video ? `<video src="${v.video}" controls></video>` : `<span class="play">&#9658;</span>`}</div>
+          <div class="video-thumb" style="background-image:url('${v.thumbnail || "assets/video-thumb.png"}')">${renderVideoMedia(v)}</div>
           <div class="admin-actions"><button class="mini-btn" onclick="openEntryEdit('${type}',${i})">Edit</button><button class="mini-btn danger" onclick="deleteEntry('${type}',${i})">Delete</button></div>
           <div class="card-body"><span class="label">${escapeHtml(v.piece || "Piece Name")}</span><h3>${escapeHtml(v.title || "Video Title")}</h3><p>${escapeHtml(v.description || "")}</p></div>
         </article>`).join("");
+    }
+
+    function toEmbeddableVideoUrl(url) {
+      if (!url) return "";
+      const value = String(url).trim();
+      const driveMatch = value.match(/drive\.google\.com\/file\/d\/([^/]+)/) || value.match(/[?&]id=([^&]+)/);
+      if (driveMatch) return `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
+      const youtubeMatch = value.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]+)/);
+      if (youtubeMatch) return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+      if (/\/preview(?:\?|$)/.test(value) || /youtube\.com\/embed\//.test(value)) return value;
+      return "";
     }
 
     function renderSocials() {
@@ -850,9 +887,11 @@
         <div class="form-grid">
           <label>Video title <input id="${prefix}${type}-title" value="${escapeAttr(item.title || "")}" /></label>
           <label>Piece name <input id="${prefix}${type}-piece" value="${escapeAttr(item.piece || "")}" /></label>
-          <label>Actual video <input id="${prefix}${type}-video" type="file" accept="video/*" /></label>
+          <label>Google Drive / video link <input id="${prefix}${type}-videoUrl" type="url" value="${escapeAttr(item.video || item.videoUrl || "")}" placeholder="https://drive.google.com/file/d/.../view" /></label>
+          <label>Optional direct video upload <input id="${prefix}${type}-video" type="file" accept="video/*" /></label>
           <label>Thumbnail image <input id="${prefix}${type}-thumbnail" type="file" accept="image/*" /></label>
         </div><label style="margin-top:14px;">Small description <textarea id="${prefix}${type}-description">${escapeHtml(item.description || "")}</textarea></label>
+        <p style="margin:10px 0 0;color:var(--gold);font-weight:700;">Google Drive videos must be shared so viewers can access them. The site embeds the Drive preview player.</p>
         <div class="form-row-actions"><button class="btn" onclick="saveEntry('${type}')" type="button">${editing ? "Save Changes" : "Add Entry"}</button></div>`;
     }
 
@@ -915,7 +954,7 @@
             title: val(`${prefix}${type}-title`),
             piece: val(`${prefix}${type}-piece`),
             description: val(`${prefix}${type}-description`),
-            video: editing ? (data[type][editing.index].video || "") : "",
+            video: val(`${prefix}${type}-videoUrl`) || (editing ? (data[type][editing.index].video || data[type][editing.index].videoUrl || "") : ""),
             thumbnail: editing ? (data[type][editing.index].thumbnail || "") : ""
           };
           const videoFile = document.getElementById(`${prefix}${type}-video`).files[0];
