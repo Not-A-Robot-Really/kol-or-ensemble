@@ -71,6 +71,13 @@
       "description": "Kol Or plays Shipping Up to Boston by the Dropkick Murphys, arranged for a strings orchestra.",
       "video": "https://drive.google.com/file/d/1RQbdAOwnLykRmdGeVdhbpzZ8FnMZ5tXF/view?usp=sharing",
       "thumbnail": "https://raw.githubusercontent.com/Not-A-Robot-Really/kol-or-ensemble/main/images/1779576341510_shipping.jpeg"
+    },
+    {
+      "title": "You Raise Me Up",
+      "piece": "Josh Groban",
+      "description": "For the concert finale, Kol Or plays You Raise Me Up by Josh Groban.",
+      "video": "https://drive.google.com/file/d/1RGGdxF_FPJL2WtUY_Rgh_FzHVS-1PQOG/view?usp=sharing",
+      "thumbnail": "assets/video-thumb.png"
     }
   ],
   "recordings": [],
