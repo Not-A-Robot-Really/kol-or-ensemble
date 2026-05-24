@@ -98,6 +98,13 @@
       "description": "For the concert finale, Kol Or plays You Raise Me Up by Josh Groban.",
       "video": "https://drive.google.com/file/d/1RGGdxF_FPJL2WtUY_Rgh_FzHVS-1PQOG/view?usp=sharing",
       "thumbnail": "assets/video-thumb.png"
+    },
+    {
+      "title": "Star Wars Theme Song",
+      "piece": "John Williams",
+      "description": "May the force be with you!",
+      "video": "https://drive.google.com/file/d/1lm_CEHRxAXCJRd1tOoqm4ZTsNROuz64I/view?usp=sharing",
+      "thumbnail": "assets/video-thumb.png"
     }
   ],
   "recordings": [],
