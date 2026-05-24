@@ -105,6 +105,13 @@
       "description": "May the force be with you!",
       "video": "https://drive.google.com/file/d/1lm_CEHRxAXCJRd1tOoqm4ZTsNROuz64I/view?usp=sharing",
       "thumbnail": "assets/video-thumb.png"
+    },
+    {
+      "title": "Lullaby",
+      "piece": "Brahms",
+      "description": "Performed during the may concert. Written by Brahms. Just don't fall asleep listening to it.",
+      "video": "https://drive.google.com/file/d/1qZDNplsWyT98XDJN1BHjMeCK215eeL_x/view?usp=sharing",
+      "thumbnail": "assets/video-thumb.png"
     }
   ],
   "recordings": [],
