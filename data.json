@@ -114,15 +114,7 @@
       "thumbnail": "assets/video-thumb.png"
     }
   ],
-  "recordings": [
-    {
-      "title": "Canon in D",
-      "piece": "Patchel",
-      "description": "S",
-      "video": "https://www.instagram.com/p/DYgTRsShq6v/?hl=en",
-      "thumbnail": "assets/recording-thumb.png"
-    }
-  ],
+  "recordings": [],
   "socials": {
     "phone": "(555) 123-4567",
     "email": "contact@example.org",
