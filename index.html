@@ -69,8 +69,9 @@
       overflow: hidden;
     }
     .brand-mark img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
-    nav { display: flex; align-items: center; justify-content: flex-end; gap: 16px; flex-wrap: wrap; }
-    nav a, .admin-link {
+    .desktop-nav { display: flex; align-items: center; justify-content: flex-end; gap: 16px; flex-wrap: wrap; }
+    #primaryNav { display: none; }
+    .desktop-nav a, #primaryNav a, .admin-link {
       color: #ffffff;
       font-size: 0.88rem;
       padding: 10px 13px;
@@ -83,13 +84,7 @@
       align-items: center;
       gap: 7px;
     }
-    nav a:hover, nav a:focus-visible, .admin-link:hover {
-      color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.28);
-      background: rgba(255, 255, 255, 0.13);
-      outline: none;
-      transform: translateY(-1px);
-    }
+    /* Nav hover handled below with hamburger styles */
     .admin-link.signed-in { color: #030303; background: var(--gold); border-color: var(--gold); font-weight: 800; }
 
     .hero {
@@ -456,9 +451,105 @@
     .page-lights span:nth-child(4) { left: 24%; top: 84%; animation-delay: 3s; }
     @keyframes notePulse { 0%, 100% { opacity: 0.34; } 50% { opacity: 0.82; } }
     @keyframes shimmer { 0%, 100% { opacity: 0.32; transform: scale(0.85); } 50% { opacity: 0.86; transform: scale(1.28); } }
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 42px;
+      height: 42px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 8px;
+      transition: color 220ms ease, border-color 220ms ease, background 220ms ease, transform 220ms ease;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+    .hamburger:hover, .hamburger:focus-visible {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #030303;
+      transform: translateY(-1px);
+      outline: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 220ms ease, opacity 220ms ease;
+    }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Nav link hover — gold button style matching logout button */
+    .desktop-nav a:hover, .desktop-nav a:focus-visible, #primaryNav a:hover, #primaryNav a:focus-visible, .admin-link:hover {
+      color: #030303;
+      border-color: var(--gold);
+      background: var(--gold);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile nav drawer overlay */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 40;
+    }
+    .nav-overlay.open { display: block; }
+
     @media (max-width: 900px) {
-      .nav-wrap { min-height: auto; padding: 12px 0; align-items: flex-start; flex-direction: column; }
-      nav { justify-content: flex-start; }
+      .nav-wrap {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        position: relative;
+      }
+      .hamburger { display: flex; margin-left: auto; position: relative; z-index: 50; }
+      .desktop-nav { display: none !important; }
+
+      /* Right-side drawer */
+      #primaryNav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(280px, 80vw);
+        background: rgba(10, 10, 10, 0.97);
+        border-left: 1px solid var(--line);
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.6);
+        display: flex !important;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 4px;
+        padding: 88px 20px 40px;
+        z-index: 45;
+        transform: translateX(100%);
+        transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+      }
+      #primaryNav.open { display: flex !important; transform: translateX(0); }
+
+      #primaryNav a, #primaryNav .admin-link {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1rem;
+        padding: 12px 16px;
+        border-radius: 10px;
+      }
+
       .hero { min-height: auto; padding-top: 64px; }
       .section-head, .split, .gallery-grid, .form-grid { grid-template-columns: 1fr; }
       .grid { grid-template-columns: 1fr 1fr; }
@@ -480,7 +571,7 @@
       <a class="brand" href="#home" aria-label="Kol Or Ensemble home">
         <span class="brand-mark"><img src="assets/kol-or-logo.png" alt="Kol Or Ensemble logo" /></span>
       </a>
-      <nav aria-label="Primary navigation">
+      <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#home"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.5V20h14v-9.5"/><path d="M9 20v-6h6v6"/></svg>Home</a>
         <a href="#members"><svg class="icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Members</a>
         <a href="#concerts"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Concerts</a>
@@ -489,6 +580,9 @@
         <a href="#socials"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg>Socials</a>
         <button class="admin-link" id="adminButton" type="button"><svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Sign In</button>
       </nav>
+      <button class="hamburger" id="hamburgerBtn" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -590,7 +684,7 @@
     <section id="socials" class="content">
       <div class="container">
         <div class="section-head">
-          <div><span class="eyebrow"><svg class="icon section-icon" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg><span class="eyebrow-label">Socials</span></span><h2>Follow the light from performance to performance.</h2></div>
+          <div><span class="eyebrow"><svg class="icon section-icon" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg><span class="eyebrow-label">Socials</span></span><h2>If you are interested in collaborating, please contact us!</h2></div>
           <p>Stay connected with Kol Or Ensemble.</p>
         </div>
         <div class="grid" id="socialsGrid"></div>
@@ -602,7 +696,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <a class="brand" href="#home"><span class="brand-mark"><img src="assets/kol-or-logo.png" alt="Kol Or Ensemble logo" /></span></a>
-      <span>(c) 2026 Kol Or Ensemble. Content powered by data.json.</span>
+      <span>copyright 2026 Kol Or Ensemble</span>
     </div>
   </footer>
 
@@ -630,6 +724,17 @@
     </div>
   </div>
 
+
+  <nav id="primaryNav" aria-label="Primary navigation">
+    <a href="#home"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.5V20h14v-9.5"/><path d="M9 20v-6h6v6"/></svg>Home</a>
+    <a href="#members"><svg class="icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Members</a>
+    <a href="#concerts"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Concerts</a>
+    <a href="#videos"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3V9z"/></svg>Videos</a>
+    <a href="#recordings"><svg class="icon violin-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="violin-body" d="M12 2.7c1.1 0 1.9.7 1.9 1.6 0 .7-.4 1.2-1 1.5v2.3c1 .4 1.7 1.2 1.7 2.2 0 .7-.3 1.3-.8 1.8 1.7.4 2.9 1.8 2.9 3.6 0 2.1-1.6 3.8-3.7 3.8-.4 0-.7-.1-1-.2-.3.1-.6.2-1 .2-2.1 0-3.7-1.7-3.7-3.8 0-1.8 1.2-3.2 2.9-3.6-.5-.5-.8-1.1-.8-1.8 0-1 .7-1.8 1.7-2.2V5.8c-.6-.3-1-.8-1-1.5 0-.9.8-1.6 1.9-1.6Z"/><path class="violin-detail" d="M10.1 8.8h3.8"/><path class="violin-detail" d="M9.2 13.2c1 .8 1.9.9 2.8.1.9.8 1.8.7 2.8-.1"/><path class="violin-detail" d="M10.3 19.8h3.4"/><path class="violin-detail" d="M10.4 5.2h3.2"/><path class="violin-detail" d="M10.4 3.4h3.2"/><path class="violin-detail" d="M10.5 7.8v11.2"/><path class="violin-detail" d="M11.5 7.6v11.8"/><path class="violin-detail" d="M12.5 7.6v11.8"/><path class="violin-detail" d="M13.5 7.8v11.2"/></svg>Recordings</a>
+    <a href="#socials"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg>Socials</a>
+    <button class="admin-link" id="adminButtonMobile" type="button"><svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Sign In</button>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
   <div class="status" id="status"></div>
 
   <script>
@@ -757,11 +862,13 @@
       renderSocials();
       renderForms();
       document.body.classList.toggle("admin-mode", isAdmin);
-      const btn = document.getElementById("adminButton");
-      btn.innerHTML = isAdmin
-        ? `<svg class="icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Log Out`
-        : `<svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Sign In`;
-      btn.classList.toggle("signed-in", isAdmin);
+      const adminBtns = [document.getElementById("adminButton"), document.getElementById("adminButtonMobile")].filter(Boolean);
+      adminBtns.forEach(btn => {
+        btn.innerHTML = isAdmin
+          ? `<svg class="icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Log Out`
+          : `<svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Sign In`;
+        btn.classList.toggle("signed-in", isAdmin);
+      });
     }
 
     function renderSite() {
@@ -1062,6 +1169,8 @@
       showStatus("Logged out");
     }
     document.getElementById("adminButton").addEventListener("click", () => isAdmin ? logOut() : openSignIn());
+    const mobileAdminBtn = document.getElementById("adminButtonMobile");
+    if (mobileAdminBtn) mobileAdminBtn.addEventListener("click", () => { closeNav(); isAdmin ? logOut() : openSignIn(); });
     document.getElementById("tokenInput").addEventListener("keydown", event => { if (event.key === "Enter") attemptSignIn(); });
     document.getElementById("editSaveButton").onclick = () => editing && saveEntry(editing.type);
 
@@ -1131,6 +1240,30 @@
       }
       window.requestAnimationFrame(tick);
     }
+    // Hamburger menu toggle
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const primaryNav = document.getElementById("primaryNav");
+    const navOverlay = document.getElementById("navOverlay");
+    function closeNav() {
+      primaryNav.classList.remove("open");
+      navOverlay.classList.remove("open");
+      hamburgerBtn.setAttribute("aria-expanded", "false");
+    }
+    function openNav() {
+      primaryNav.classList.add("open");
+      navOverlay.classList.add("open");
+      hamburgerBtn.setAttribute("aria-expanded", "true");
+    }
+    if (hamburgerBtn && primaryNav) {
+      hamburgerBtn.addEventListener("click", () => {
+        primaryNav.classList.contains("open") ? closeNav() : openNav();
+      });
+      navOverlay.addEventListener("click", closeNav);
+      primaryNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeNav);
+      });
+    }
+
     loadData();
     window.requestAnimationFrame(tick);
   </script>
@@ -1138,3 +1271,5 @@
 </html>
 index.html
 Displaying index.html.
+index - 2026-05-23T220231.782.html
+Displaying index - 2026-05-23T220231.782.html.
